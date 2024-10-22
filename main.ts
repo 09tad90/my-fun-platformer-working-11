@@ -802,7 +802,6 @@ if (randint(1, 2) == 1) {
 }
 scene.cameraFollowSprite(mySprite)
 tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 59))
-tiles.placeOnRandomTile(mySprite, assets.tile`myTile18`)
 info.setLife(100)
 effects.clouds.startScreenEffect()
 game.showLongText("You were walking by a lovely lake and you saw a cave. You decided to go in. The next thing you knew you were falling into a deep dark hole  ", DialogLayout.Full)
