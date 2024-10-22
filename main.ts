@@ -1,52 +1,6 @@
 namespace SpriteKind {
     export const player_2 = SpriteKind.create()
 }
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
-    controller.moveSprite(mySprite, 0, 0)
-    mySprite.ay = 0
-    tiles.placeOnTile(mySprite, tiles.getTileLocation(14, 37))
-    mySprite.ay = gravity
-    controller.moveSprite(mySprite, 100, 0)
-    tiles.setWallAt(tiles.getTileLocation(13, 38), true)
-    tiles.setWallAt(tiles.getTileLocation(15, 38), true)
-    tiles.setTileAt(tiles.getTileLocation(15, 38), sprites.dungeon.greenOuterSouth1)
-    tiles.setTileAt(tiles.getTileLocation(13, 38), sprites.dungeon.greenOuterSouth1)
-    tiles.setTileAt(tiles.getTileLocation(14, 38), sprites.dungeon.greenOuterSouth1)
-    tiles.setTileAt(tiles.getTileLocation(13, 40), assets.tile`transparency16`)
-    tiles.setTileAt(tiles.getTileLocation(15, 40), assets.tile`transparency16`)
-    info.changeScoreBy(2)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
-    tiles.setTileAt(tiles.getTileLocation(10, 3), assets.tile`transparency16`)
-    tiles.setTileAt(tiles.getTileLocation(5, 4), assets.tile`transparency16`)
-    info.changeScoreBy(1)
-})
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.doorClosedEast, function (sprite, location) {
-	
-})
-scene.onOverlapTile(SpriteKind.Player, sprites.castle.rock1, function (sprite, location) {
-    tiles.setTileAt(tiles.getTileLocation(30, 31), assets.tile`transparency16`)
-    tiles.setTileAt(tiles.getTileLocation(34, 22), assets.tile`transparency16`)
-    info.changeScoreBy(2)
-})
-scene.onOverlapTile(SpriteKind.Player, sprites.builtin.field0, function (sprite, location) {
-	
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    controller.moveSprite(mySprite, 0, 0)
-    mySprite.ay = 0
-    tiles.placeOnTile(mySprite, tiles.getTileLocation(14, 37))
-    mySprite.ay = gravity
-    controller.moveSprite(mySprite, 100, 0)
-    tiles.setWallAt(tiles.getTileLocation(13, 37), true)
-    tiles.setWallAt(tiles.getTileLocation(15, 37), true)
-    tiles.setTileAt(tiles.getTileLocation(13, 38), sprites.dungeon.greenOuterSouth1)
-    tiles.setTileAt(tiles.getTileLocation(15, 38), sprites.dungeon.greenOuterSouth1)
-    tiles.setTileAt(tiles.getTileLocation(14, 38), sprites.dungeon.greenOuterSouth1)
-    tiles.setTileAt(tiles.getTileLocation(13, 40), assets.tile`transparency16`)
-    tiles.setTileAt(tiles.getTileLocation(15, 40), assets.tile`transparency16`)
-    info.changeScoreBy(1)
-})
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairLadder, function (sprite, location) {
     controller.moveSprite(mySprite, 0, 0)
     mySprite.ay = 0
@@ -92,31 +46,41 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         mySprite.vy = -140
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
-    tiles.setTileAt(tiles.getTileLocation(21, 21), assets.tile`transparency16`)
-    tiles.setTileAt(tiles.getTileLocation(38, 12), assets.tile`transparency16`)
-    gravity = pixals_to_meters * 9.8
-    mySprite.ay = gravity
-    info.changeScoreBy(2)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, location) {
-    tiles.setTileAt(tiles.getTileLocation(6, 23), assets.tile`transparency16`)
-    tiles.setTileAt(tiles.getTileLocation(4, 27), assets.tile`transparency16`)
-    info.changeScoreBy(1)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, location) {
-    tiles.setTileAt(tiles.getTileLocation(5, 4), assets.tile`transparency16`)
-    tiles.setTileAt(tiles.getTileLocation(10, 3), assets.tile`transparency16`)
-    info.changeScoreBy(2)
-})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, location) {
     tiles.placeOnTile(mySprite, tiles.getTileLocation(21, 1))
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleBlueCrystal, function (sprite, location) {
-	
-})
-scene.onOverlapTile(SpriteKind.Player, tiles.util.arrow7, function (sprite, location) {
-	
+    if (location.column == 13 && location.row == 40) {
+        controller.moveSprite(mySprite, 0, 0)
+        mySprite.ay = 0
+        tiles.placeOnTile(mySprite, tiles.getTileLocation(14, 37))
+        mySprite.ay = gravity
+        controller.moveSprite(mySprite, 100, 0)
+        tiles.setWallAt(tiles.getTileLocation(13, 38), true)
+        tiles.setWallAt(tiles.getTileLocation(15, 38), true)
+        tiles.setTileAt(tiles.getTileLocation(13, 38), sprites.dungeon.greenOuterSouth1)
+        tiles.setTileAt(tiles.getTileLocation(15, 38), sprites.dungeon.greenOuterSouth1)
+        tiles.setTileAt(tiles.getTileLocation(14, 38), sprites.dungeon.greenOuterSouth1)
+        tiles.setTileAt(tiles.getTileLocation(13, 40), assets.tile`transparency16`)
+        tiles.setTileAt(tiles.getTileLocation(15, 40), assets.tile`transparency16`)
+        info.changeScoreBy(1)
+    } else if (location.column == 6 && location.row == 23) {
+        tiles.setTileAt(tiles.getTileLocation(6, 23), assets.tile`transparency16`)
+        tiles.setTileAt(tiles.getTileLocation(4, 27), assets.tile`transparency16`)
+        info.changeScoreBy(1)
+    } else if (location.column == 10 && location.row == 3) {
+        tiles.setTileAt(tiles.getTileLocation(10, 3), assets.tile`transparency16`)
+        tiles.setTileAt(tiles.getTileLocation(5, 4), assets.tile`transparency16`)
+        info.changeScoreBy(1)
+    } else if (location.column == 38 && location.row == 12) {
+        tiles.setTileAt(tiles.getTileLocation(38, 12), assets.tile`transparency16`)
+        tiles.setTileAt(tiles.getTileLocation(21, 21), assets.tile`transparency16`)
+        info.changeScoreBy(1)
+    } else if (location.column == 30 && location.row == 31) {
+        tiles.setTileAt(tiles.getTileLocation(30, 31), assets.tile`transparency16`)
+        tiles.setTileAt(tiles.getTileLocation(34, 22), assets.tile`transparency16`)
+        info.changeScoreBy(2)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
     controller.moveSprite(mySprite, 0, 0)
@@ -376,13 +340,6 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardWater, function (sp
     gravity = 100
     mySprite.ay = gravity
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
-	
-})
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardSpike, function (sprite, location) {
-    tiles.setTileAt(tiles.getTileLocation(11, 67), assets.tile`transparency16`)
-    info.changeScoreBy(2)
-})
 info.onLifeZero(function () {
     scene.setBackgroundImage(img`
         2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
@@ -508,28 +465,46 @@ info.onLifeZero(function () {
         `)
     sprites.destroy(mySprite)
     tiles.setCurrentTilemap(tilemap`level12`)
-    game.splash("You cannot respawn ")
     game.splash("You fell into lava and died.")
-    game.splash("You will never see the", "light of day again")
     game.gameOver(false)
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile10`, function (sprite, location) {
-    tiles.setTileAt(tiles.getTileLocation(4, 27), assets.tile`transparency16`)
-    tiles.setTileAt(tiles.getTileLocation(6, 23), assets.tile`transparency16`)
-    info.changeScoreBy(2)
-})
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, function (sprite, location) {
-	
-})
-scene.onOverlapTile(SpriteKind.Player, sprites.castle.rock2, function (sprite, location) {
-    tiles.setTileAt(tiles.getTileLocation(34, 22), assets.tile`transparency16`)
-    tiles.setTileAt(tiles.getTileLocation(30, 31), assets.tile`transparency16`)
-    info.changeScoreBy(4)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile11`, function (sprite, location) {
-    tiles.setTileAt(tiles.getTileLocation(38, 12), assets.tile`transparency16`)
-    tiles.setTileAt(tiles.getTileLocation(21, 21), assets.tile`transparency16`)
-    info.changeScoreBy(1)
+    if (location.column == 15 && location.row == 40) {
+        controller.moveSprite(mySprite, 0, 0)
+        mySprite.ay = 0
+        tiles.placeOnTile(mySprite, tiles.getTileLocation(14, 37))
+        mySprite.ay = gravity
+        controller.moveSprite(mySprite, 100, 0)
+        tiles.setWallAt(tiles.getTileLocation(13, 38), true)
+        tiles.setWallAt(tiles.getTileLocation(15, 38), true)
+        tiles.setTileAt(tiles.getTileLocation(15, 38), sprites.dungeon.greenOuterSouth1)
+        tiles.setTileAt(tiles.getTileLocation(13, 38), sprites.dungeon.greenOuterSouth1)
+        tiles.setTileAt(tiles.getTileLocation(14, 38), sprites.dungeon.greenOuterSouth1)
+        tiles.setTileAt(tiles.getTileLocation(15, 40), assets.tile`transparency16`)
+        tiles.setTileAt(tiles.getTileLocation(13, 40), assets.tile`transparency16`)
+        info.changeScoreBy(2)
+    } else if (location.column == 4 && location.row == 27) {
+        tiles.setTileAt(tiles.getTileLocation(4, 27), assets.tile`transparency16`)
+        tiles.setTileAt(tiles.getTileLocation(6, 23), assets.tile`transparency16`)
+        info.changeScoreBy(2)
+    } else if (location.column == 5 && location.row == 4) {
+        tiles.setTileAt(tiles.getTileLocation(5, 4), assets.tile`transparency16`)
+        tiles.setTileAt(tiles.getTileLocation(10, 3), assets.tile`transparency16`)
+        info.changeScoreBy(2)
+    } else if (location.column == 21 && location.row == 21) {
+        tiles.setTileAt(tiles.getTileLocation(21, 21), assets.tile`transparency16`)
+        tiles.setTileAt(tiles.getTileLocation(38, 12), assets.tile`transparency16`)
+        gravity = pixals_to_meters * 9.8
+        mySprite.ay = gravity
+        info.changeScoreBy(2)
+    } else if (location.column == 34 && location.row == 22) {
+        tiles.setTileAt(tiles.getTileLocation(34, 22), assets.tile`transparency16`)
+        tiles.setTileAt(tiles.getTileLocation(30, 31), assets.tile`transparency16`)
+        info.changeScoreBy(4)
+    } else if (location.column == 11 && location.row == 67) {
+        tiles.setTileAt(tiles.getTileLocation(11, 67), assets.tile`transparency16`)
+        info.changeScoreBy(2)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, function (sprite, location) {
     scene.setBackgroundImage(img`
@@ -654,7 +629,17 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, func
         8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
         ee88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
         `)
-    game.showLongText("You made it back to the surface in one piece. You saw the lake from the nearby mountain and the view was amazing ", DialogLayout.Bottom)
+    game.splash("Yay you survived")
+    if (info.life() == 9) {
+        game.splash("Hitless? Nice")
+        info.changeScoreBy(1)
+    }
+    if (info.score() == 15) {
+        game.splash("Max score? Nice")
+    }
+    if (info.score() == 14) {
+        game.splash("All hard routes?", "Try for hitless")
+    }
     game.gameOver(true)
 })
 let respawn_row = 0
@@ -803,7 +788,6 @@ if (randint(1, 2) == 1) {
 scene.cameraFollowSprite(mySprite)
 tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 59))
 effects.clouds.startScreenEffect()
-game.showLongText("You were walking by a lovely lake and you saw a cave. You decided to go in. The next thing you knew you were falling into a deep dark hole  ", DialogLayout.Full)
 effects.clouds.endScreenEffect()
 mp.setPlayerIndicatorsVisible(true)
 controller.moveSprite(mySprite, 100, 0)
