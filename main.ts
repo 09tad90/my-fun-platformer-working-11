@@ -79,7 +79,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairLadder, function (sp
         game.splash("R, L, R, R, L")
         tiles.setTileAt(tiles.getTileLocation(33, 65), assets.tile`myTile17`)
         info.changeLifeBy(3)
-    } else if (location.column == 41 && location.row == 80) {
+    } else if (location.column == 32 && location.row == 22) {
         respawn_col = 34
         respawn_row = 20
         tiles.placeOnRandomTile(mySprite, tiles.util.arrow2)
@@ -373,6 +373,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, l
 	
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardSpike, function (sprite, location) {
+    tiles.setTileAt(tiles.getTileLocation(11, 67), assets.tile`transparency16`)
     info.changeScoreBy(2)
 })
 info.onLifeZero(function () {
@@ -514,7 +515,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, fu
 	
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.rock2, function (sprite, location) {
-    tiles.setTileAt(tiles.getTileLocation(33, 22), assets.tile`transparency16`)
+    tiles.setTileAt(tiles.getTileLocation(34, 22), assets.tile`transparency16`)
     tiles.setTileAt(tiles.getTileLocation(30, 31), assets.tile`transparency16`)
     info.changeScoreBy(4)
 })
