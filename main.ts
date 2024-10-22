@@ -26,7 +26,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.doorClosedEast, function 
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.rock1, function (sprite, location) {
     tiles.setTileAt(tiles.getTileLocation(30, 31), assets.tile`transparency16`)
-    tiles.setTileAt(tiles.getTileLocation(33, 22), assets.tile`transparency16`)
+    tiles.setTileAt(tiles.getTileLocation(34, 22), assets.tile`transparency16`)
     info.changeScoreBy(2)
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.builtin.field0, function (sprite, location) {
@@ -80,8 +80,8 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairLadder, function (sp
         tiles.setTileAt(tiles.getTileLocation(33, 65), assets.tile`myTile17`)
         info.changeLifeBy(3)
     } else if (location.column == 32 && location.row == 22) {
-        respawn_col = 34
-        respawn_row = 20
+        respawn_col = 5
+        respawn_row = 72
         tiles.placeOnRandomTile(mySprite, tiles.util.arrow2)
     }
     mySprite.ay = gravity
@@ -95,6 +95,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
     tiles.setTileAt(tiles.getTileLocation(21, 21), assets.tile`transparency16`)
     tiles.setTileAt(tiles.getTileLocation(38, 12), assets.tile`transparency16`)
+    gravity = pixals_to_meters * 9.8
+    mySprite.ay = gravity
     info.changeScoreBy(2)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, location) {
@@ -119,6 +121,7 @@ scene.onOverlapTile(SpriteKind.Player, tiles.util.arrow7, function (sprite, loca
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
     controller.moveSprite(mySprite, 0, 0)
     mySprite.ay = 0
+    gravity = pixals_to_meters * 9.8
     scene.setBackgroundImage(img`
         2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
         2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
@@ -368,6 +371,10 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sp
     tiles.placeOnTile(mySprite, tiles.getTileLocation(respawn_col, respawn_row))
     mySprite.ay = gravity
     controller.moveSprite(mySprite, 100, 0)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardWater, function (sprite, location) {
+    gravity = 100
+    mySprite.ay = gravity
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
 	
@@ -653,6 +660,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, func
 let respawn_row = 0
 let respawn_col = 0
 let gravity = 0
+let pixals_to_meters = 0
 let mySprite: Sprite = null
 Render.setViewMode(ViewMode.tilemapView)
 tiles.setCurrentTilemap(tilemap`level1`)
@@ -794,12 +802,14 @@ if (randint(1, 2) == 1) {
 }
 scene.cameraFollowSprite(mySprite)
 tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 59))
+tiles.placeOnRandomTile(mySprite, assets.tile`myTile18`)
+info.setLife(100)
 effects.clouds.startScreenEffect()
 game.showLongText("You were walking by a lovely lake and you saw a cave. You decided to go in. The next thing you knew you were falling into a deep dark hole  ", DialogLayout.Full)
 effects.clouds.endScreenEffect()
 mp.setPlayerIndicatorsVisible(true)
 controller.moveSprite(mySprite, 100, 0)
-let pixals_to_meters = 30
+pixals_to_meters = 30
 let progerss = 1
 gravity = pixals_to_meters * 9.8
 mySprite.ay = gravity
